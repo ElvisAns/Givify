@@ -17,8 +17,12 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade'); //note here contrained assume we have users table
             $table->unsignedBigInteger('montant');
             $table->boolean('confirmed')->default(false);
-            $table->string('payment_method_used')->default("-");
-            $table->string('paid_to_tel')->default("-");
+            $table->foreignId("payment_endpoint_id")->constrained()->onUpdate('cascade'); //only on update
+            $table->date("echeance");
+            $table->bigInteger("montant_souscrit");
+            $table->string("addresse");
+            $table->string("phone_1");
+            $table->string("phone_2");
         });
     }
 

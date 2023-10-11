@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('APP_ENV') === 'production' ? env('DB_CONNECTION_PROD', 'pgsql') : env('DB_CONNECTION_LOCAL', 'mysql'),
+    'default' => env('APP_ENV') === 'production' ? env('DB_CONNECTION_PROD', 'mysql_prod') : env('DB_CONNECTION_LOCAL', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,6 +52,26 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+        'mysql_prod' => [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL_PROD'),
+            'host' => env('DB_HOST_PROD', '127.0.0.1'),
+            'port' => env('DB_PORT_PROD', '3306'),
+            'database' => env('DB_DATABASE_PROD', 'forge'),
+            'username' => env('DB_USERNAME_PROD', 'forge'),
+            'password' => env('DB_PASSWORD_PROD', ''),
+            'unix_socket' => env('DB_SOCKET_PROD', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',

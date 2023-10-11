@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FundsCollector;
+use App\Http\Controllers\Welcome;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +14,4 @@ use App\Http\Controllers\FundsCollector;
 |
 */
 
-Route::get("/", [FundsCollector::class,"welcome"]);
+Route::get("/", [Welcome::class,"welcome"]);

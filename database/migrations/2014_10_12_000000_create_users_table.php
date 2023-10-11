@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string("phone_1")->nullable(); //user will fill after creating account
+            $table->string("phone_2")->nullable();
+            $table->string("addresse")->nullable();
+            $table->bigInteger("montant_souscrit")->nullable();
+            $table->date("echeance")->nullable();
         });
     }
 
